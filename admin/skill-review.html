@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · Skill Review</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body data-page="admin-review">
+  <div class="app">
+    <header class="header">
+      <div class="brand"><img src="../assets/logo.svg" alt="logo" /><h1>Admin · 技能审核</h1></div>
+      <div class="toolbar"><a class="btn" href="../index.html">返回入口</a><a class="btn" data-page-link="admin-review" href="./skill-review.html">当前页</a><a class="btn" href="./skill-management.html">治理配置</a></div>
+    </header>
+    <main class="main">
+      <section class="panel">
+        <h3 class="section-title">待审核提交</h3>
+        <div class="grid">
+          <a class="card" href="./analytics.html" data-log="审核 SQL Guard v2.1"><h3>SQL Guard v2.1</h3><p>风险等级：中 · 提交人：platform-team</p><span class="tag">待审批</span></a>
+          <a class="card" href="./analytics.html" data-log="审核 Browser Agent v1.4"><h3>Browser Agent v1.4</h3><p>风险等级：高 · 提交人：ops-team</p><span class="tag">需复核</span></a>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../js/main.js"></script>
+</body>
+</html>

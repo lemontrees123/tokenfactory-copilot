@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · Overview</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body data-page="admin-overview">
+  <div class="app">
+    <header class="header">
+      <div class="brand"><img src="../assets/logo.svg" alt="logo" /><h1>Admin · 运维总览</h1></div>
+      <div class="toolbar">
+        <a class="btn" href="../index.html">返回入口</a>
+        <a class="btn" data-page-link="admin-overview" href="./overview.html">总览</a>
+        <a class="btn" data-page-link="admin-skill-mgmt" href="./skill-management.html">技能治理</a>
+        <a class="btn" data-page-link="admin-review" href="./skill-review.html">技能审核</a>
+        <a class="btn" data-page-link="admin-analytics" href="./analytics.html">分析</a>
+      </div>
+    </header>
+    <main class="main">
+      <section class="hero">
+        <h2>全局运维态势</h2>
+        <p class="lead">聚合各租户运行状态、告警与容量趋势，支持运维侧统一治理。</p>
+      </section>
+      <section class="panel">
+        <h3 class="section-title">集群指标</h3>
+        <div class="metric-list">
+          <div class="metric"><div class="name">在线节点</div><div class="value">48</div></div>
+          <div class="metric"><div class="name">告警中</div><div class="value">3</div></div>
+          <div class="metric"><div class="name">资源余量</div><div class="value">31%</div></div>
+          <div class="metric"><div class="name">SLO 达成</div><div class="value">99.2%</div></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../js/main.js"></script>
+</body>
+</html>

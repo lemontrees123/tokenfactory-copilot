@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · Skill Management</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body data-page="admin-skill-mgmt">
+  <div class="app">
+    <header class="header">
+      <div class="brand"><img src="../assets/logo.svg" alt="logo" /><h1>Admin · 技能治理</h1></div>
+      <div class="toolbar"><a class="btn" href="../index.html">返回入口</a><a class="btn" data-page-link="admin-skill-mgmt" href="./skill-management.html">当前页</a><a class="btn" href="./skill-review.html">前往审核</a></div>
+    </header>
+    <main class="main">
+      <section class="panel">
+        <h3 class="section-title">策略视图</h3>
+        <div class="grid">
+          <a class="card" href="./analytics.html" data-log="查看灰度策略"><h3>灰度发布策略</h3><p>按租户分批启用新版本技能。</p></a>
+          <a class="card" href="./analytics.html" data-log="查看回滚策略"><h3>回滚策略</h3><p>异常触发后自动回退稳定版本。</p></a>
+          <a class="card" href="./analytics.html" data-log="查看权限模板"><h3>权限模板</h3><p>按部门控制技能可见与可执行范围。</p></a>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../js/main.js"></script>
+</body>
+</html>
