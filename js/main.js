@@ -32,6 +32,44 @@
     });
   }
 
+  function setupDaoCloudShell() {
+    if (document.body.getAttribute("data-page") !== "daocloud-shell") return;
+
+    var layout = document.querySelector(".shell-layout");
+    var toggle = document.querySelector(".shell-menu-toggle");
+    var searches = Array.prototype.slice.call(
+      document.querySelectorAll(".directory-search input")
+    );
+    var rows = Array.prototype.slice.call(
+      document.querySelectorAll(".directory-row:not(.directory-head), .model-row:not(.model-row-head)")
+    );
+
+    if (layout && toggle) {
+      toggle.addEventListener("click", function () {
+        var collapsed = layout.classList.toggle("is-collapsed");
+        toggle.setAttribute("aria-label", collapsed ? "展开侧边栏" : "收起侧边栏");
+        toggle.setAttribute("title", collapsed ? "展开侧边栏" : "收起侧边栏");
+      });
+    }
+
+    if (searches.length && rows.length) {
+      searches.forEach(function (search) {
+        search.addEventListener("input", function () {
+          var keyword = search.value.trim().toLowerCase();
+          searches.forEach(function (otherSearch) {
+            if (otherSearch !== search) {
+              otherSearch.value = search.value;
+            }
+          });
+          rows.forEach(function (row) {
+            row.hidden = keyword && row.textContent.toLowerCase().indexOf(keyword) === -1;
+          });
+        });
+      });
+    }
+  }
+
   setupClickLog();
   setupActiveNav();
+  setupDaoCloudShell();
 })();

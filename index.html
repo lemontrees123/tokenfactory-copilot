@@ -3,760 +3,257 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ClawOS 原型总入口</title>
+  <meta name="description" content="Token Factory Copilot 模型广场管理静态原型，可直接部署到 Cloudflare Pages。" />
+  <title>Token Factory Copilot · 模型广场管理</title>
   <link rel="stylesheet" href="./css/style.css" />
 </head>
-<body data-page="root-index">
-  <div class="app">
-    <header class="header">
-      <div class="brand">
-        <img src="./assets/logo.svg" alt="ClawOS" />
-        <div>
-          <h1>ClawOS HTML 原型</h1>
-          <div class="crumb">Cloudflare Pages 静态多页面结构</div>
-        </div>
-      </div>
-      <div class="status">构建命令：留空 · 输出目录：根目录</div>
+<body data-page="daocloud-shell">
+  <div class="shell-layout">
+    <header class="shell-topbar">
+      <button class="shell-icon-button shell-menu-toggle" type="button" aria-label="收起侧边栏" title="收起侧边栏">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <a class="shell-brand" href="./index.html" aria-label="Token Factory Copilot 首页">
+        <img src="./assets/logo.svg" alt="" />
+        <span>DaoCloud</span>
+      </a>
+
+      <nav class="shell-actions" aria-label="全局操作">
+        <button class="shell-icon-button shell-copilot-action" type="button" title="Copilot" aria-label="Copilot">
+          <span class="shell-copilot-label">copilot</span>
+          <span aria-hidden="true">▣</span>
+        </button>
+        <button class="shell-icon-button" type="button" title="视图布局" aria-label="视图布局">▰</button>
+        <button class="shell-icon-button" type="button" title="帮助" aria-label="帮助">?</button>
+        <button class="shell-icon-button shell-bell" type="button" title="通知" aria-label="通知">🔔</button>
+        <button class="shell-user" type="button" aria-label="用户菜单">
+          <span class="shell-avatar" aria-hidden="true">L</span>
+          <span>liushuang-ndx</span>
+          <span aria-hidden="true">⌄</span>
+        </button>
+      </nav>
     </header>
 
-    <main class="main">
-      <section class="hero">
-        <h2>原型总入口</h2>
-        <p class="lead">从这里进入工作空间视角与运维管理视角，所有页面均为纯 HTML/CSS/JS 并通过相对路径跳转。</p>
-      </section>
-
-      <section class="panel">
-        <h3 class="section-title">Workspace 视角</h3>
-        <div class="nav-grid">
-          <a class="card" data-log="跳转 workspace/overview" href="./workspace/overview.html"><h3>工作空间总览</h3><p>资源状态、运行指标、快捷入口。</p></a>
-          <a class="card" data-log="跳转 workspace/skill-market" href="./workspace/skill-market.html"><h3>Skill Market</h3><p>技能目录、标签筛选、安装入口。</p></a>
-          <a class="card" data-log="跳转 workspace/skill-management" href="./workspace/skill-management.html"><h3>技能管理</h3><p>已安装技能、启停和版本信息。</p></a>
-          <a class="card" data-log="跳转 workspace/openclaw-instances" href="./workspace/openclaw-instances.html"><h3>OpenClaw 实例</h3><p>实例列表、状态、配额占用。</p></a>
-          <a class="card" data-log="跳转 workspace/usage" href="./workspace/usage.html"><h3>使用与计费</h3><p>请求量、时长、成本趋势。</p></a>
-        </div>
-      </section>
-
-      <section class="panel">
-        <h3 class="section-title">Admin 视角</h3>
-        <div class="nav-grid">
-          <a class="card" data-log="跳转 admin/overview" href="./admin/overview.html"><h3>运维总览</h3><p>全局健康、告警、集群负载。</p></a>
-          <a class="card" data-log="跳转 admin/skill-management" href="./admin/skill-management.html"><h3>技能治理</h3><p>租户权限、版本策略、分发范围。</p></a>
-          <a class="card" data-log="跳转 admin/skill-review" href="./admin/skill-review.html"><h3>技能审核</h3><p>提交流水、风险扫描、审批动作。</p></a>
-          <a class="card" data-log="跳转 admin/analytics" href="./admin/analytics.html"><h3>运营分析</h3><p>活跃度、转化、留存和容量趋势。</p></a>
-        </div>
-      </section>
-
-      <section class="panel">
-        <h3 class="section-title">最近操作</h3>
-        <ul id="activity-log"></ul>
-      </section>
-    </main>
-
-    <footer class="footer">ClawOS Prototype · Ready for Cloudflare Pages</footer>
-  </div>
-  <script src="./js/main.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Token Factory Copilot — 可点击 HTML 原型" />
-  <title>Token Factory Copilot · 智能工作台</title>
-  <style>
-    :root {
-      --bg: #0c0f14;
-      --surface: #141a24;
-      --surface-2: #1a2230;
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #e8ecf2;
-      --muted: #8b96a8;
-      --accent: #3d8bfd;
-      --accent-dim: rgba(61, 139, 253, 0.12);
-      --success: #34d399;
-      --radius: 12px;
-      --font: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .app {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px 20px 48px;
-      min-height: 100vh;
-    }
-
-    .main {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    .header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .crumb {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.875rem;
-      color: var(--muted);
-    }
-
-    .crumb span:first-child {
-      color: var(--muted);
-    }
-
-    .crumb span:last-of-type,
-    .crumb .crumb-current {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 16px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.15s, border-color 0.15s;
-    }
-
-    .btn:hover {
-      background: var(--surface-2);
-      border-color: rgba(255, 255, 255, 0.12);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      border-color: transparent;
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.05);
-    }
-
-    .hero {
-      padding: 8px 0 0;
-    }
-
-    .hero h1 {
-      margin: 0 0 12px;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .lead {
-      margin: 0;
-      max-width: 42em;
-      font-size: 1.0625rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .panel-stack {
-      display: grid;
-      gap: 20px;
-    }
-
-    @media (min-width: 900px) {
-      .panel-stack {
-        grid-template-columns: 1fr 320px;
-        align-items: start;
-      }
-    }
-
-    .panels-main {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .section-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin: 0 0 8px;
-    }
-
-    .tile-grid {
-      display: grid;
-      gap: 12px;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    }
-
-    .tile {
-      position: relative;
-      padding: 18px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      text-align: left;
-      cursor: pointer;
-      font-family: inherit;
-      color: inherit;
-      transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
-    }
-
-    .tile:hover {
-      border-color: rgba(61, 139, 253, 0.35);
-      box-shadow: 0 0 0 1px var(--accent-dim);
-    }
-
-    .tile:active {
-      transform: scale(0.99);
-    }
-
-    .tile:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    .tile-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      margin-bottom: 12px;
-    }
-
-    .tile h3 {
-      margin: 0 0 6px;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .tile p {
-      margin: 0;
-      font-size: 0.8125rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .tile-badge {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      font-size: 0.65rem;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(52, 211, 153, 0.15);
-      color: var(--success);
-    }
-
-    .aside {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .aside h2 {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .log-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      font-size: 0.8125rem;
-      color: var(--muted);
-      max-height: 260px;
-      overflow-y: auto;
-    }
-
-    .log-list li {
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .log-list li:last-child {
-      border-bottom: 0;
-    }
-
-    .log-list time {
-      display: block;
-      font-size: 0.7rem;
-      color: var(--muted);
-      opacity: 0.85;
-    }
-
-    .drawer-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s, visibility 0.2s;
-      z-index: 100;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 16px;
-    }
-
-    .drawer-overlay.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .drawer {
-      width: 100%;
-      max-width: 560px;
-      max-height: 85vh;
-      overflow: auto;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius) var(--radius) 0 0;
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.25s ease-out;
-    }
-
-    .drawer-overlay.is-open .drawer {
-      transform: translateY(0);
-    }
-
-    @media (min-width: 600px) {
-      .drawer-overlay {
-        align-items: center;
-      }
-
-      .drawer {
-        border-radius: var(--radius);
-        transform: translateY(16px) scale(0.96);
-        opacity: 0;
-      }
-
-      .drawer-overlay.is-open .drawer {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-        transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-      }
-    }
-
-    .drawer-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .drawer-header h2 {
-      margin: 0;
-      font-size: 1.125rem;
-    }
-
-    .drawer-close {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      border: 0;
-      border-radius: 8px;
-      background: var(--surface);
-      color: var(--text);
-      cursor: pointer;
-      font-size: 1.25rem;
-      line-height: 1;
-    }
-
-    .drawer-body p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 0.9375rem;
-    }
-
-    .drawer-kv {
-      display: grid;
-      gap: 8px;
-      margin-top: 16px;
-      font-size: 0.875rem;
-    }
-
-    .drawer-kv div {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 12px;
-      background: var(--bg);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-
-    .drawer-kv dt {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .drawer-kv dd {
-      margin: 0;
-      font-weight: 500;
-      text-align: right;
-    }
-
-    .footer-note {
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-align: center;
-      padding-top: 24px;
-    }
-  </style>
-</head>
-<body>
-  <div class="app">
-    <main class="main">
-      <header class="header" role="banner">
-        <div class="crumb" aria-label="面包屑">
-          <span>首页</span>
-          <span aria-current="page">DaoCloud Token Factory 智能工作台</span>
-        </div>
-        <div class="header-actions">
-          <button type="button" class="btn" id="btnDemo">演示模式</button>
-          <button type="button" class="btn btn-primary" id="btnDeployHint">部署说明</button>
-        </div>
-      </header>
-
-      <section class="hero" aria-labelledby="hero-title">
-        <h1 id="hero-title">Token Factory Copilot</h1>
-        <div class="lead">
-          面向 Token 供给与运营的智能控制中枢，让资源、模型、流量、调度与经营持续协同运转。
-        </div>
-      </section>
-
-      <div class="panel-stack">
-        <div class="panels-main">
-          <section aria-labelledby="modules-title">
-            <h2 class="section-title" id="modules-title">可点击模块 · 原型导航</h2>
-            <div class="tile-grid" id="tileGrid" role="list"></div>
-          </section>
+    <div class="shell-main">
+      <aside class="shell-sidebar" aria-label="主菜单">
+        <div class="shell-menu-group">
+          <div class="shell-group-title">概览</div>
+          <a class="shell-menu-item" href="./workspace/overview.html">
+            <span class="shell-menu-icon" aria-hidden="true">▦</span>
+            <span>驾驶舱</span>
+          </a>
         </div>
 
-        <aside class="aside" aria-labelledby="activity-title">
-          <h2 id="activity-title">活动流（模拟）</h2>
-          <ul class="log-list" id="activityLog"></ul>
-        </aside>
-      </div>
+        <div class="shell-menu-group">
+          <div class="shell-group-title">服务供给</div>
+          <a class="shell-menu-item is-active" href="./index.html" aria-current="page">
+            <span class="shell-menu-icon" aria-hidden="true">●</span>
+            <span>Token 工厂管理</span>
+          </a>
+          <a class="shell-menu-item" href="./workspace/openclaw-instances.html">
+            <span class="shell-menu-icon" aria-hidden="true">◌</span>
+            <span>Infrax <span class="shell-optional">可选</span></span>
+          </a>
+        </div>
 
-      <p class="footer-note">
-        静态单页 · CSS / JS 已全部内联 · 可直接部署到
-        <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>
-      </p>
-    </main>
-  </div>
+        <div class="shell-menu-group">
+          <div class="shell-group-title">基础设施</div>
+          <a class="shell-menu-item" href="./admin/overview.html">
+            <span class="shell-menu-icon" aria-hidden="true">⬡</span>
+            <span>容器管理</span>
+          </a>
+          <a class="shell-menu-item" href="./admin/analytics.html">
+            <span class="shell-menu-icon" aria-hidden="true">◔</span>
+            <span>可观测性</span>
+            <span class="shell-arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="shell-menu-item" href="./workspace/skill-market.html">
+            <span class="shell-menu-icon" aria-hidden="true">▣</span>
+            <span>镜像仓库</span>
+          </a>
+          <a class="shell-menu-item" href="./workspace/usage.html">
+            <span class="shell-menu-icon" aria-hidden="true">◔</span>
+            <span>设备管理 <span class="shell-optional">可选</span></span>
+          </a>
+        </div>
 
-  <div class="drawer-overlay" id="drawerOverlay" role="dialog" aria-modal="true" aria-hidden="true" hidden>
-    <div class="drawer" id="drawer" role="document">
-      <div class="drawer-header">
-        <h2 id="drawerTitle">详情</h2>
-        <button type="button" class="drawer-close" id="drawerClose" aria-label="关闭">×</button>
-      </div>
-      <div class="drawer-body">
-        <p id="drawerDesc"></p>
-        <dl class="drawer-kv" id="drawerKv"></dl>
-      </div>
+        <div class="shell-menu-group">
+          <div class="shell-group-title">管理</div>
+          <a class="shell-menu-item" href="./admin/skill-management.html">
+            <span class="shell-menu-icon" aria-hidden="true">◆</span>
+            <span>商品管理</span>
+          </a>
+          <a class="shell-menu-item" href="./admin/skill-review.html">
+            <span class="shell-menu-icon" aria-hidden="true">◎</span>
+            <span>全局管理</span>
+          </a>
+        </div>
+
+        <div class="shell-menu-group">
+          <button class="shell-more" type="button">
+            <span>更多</span>
+            <span class="shell-chevron" aria-hidden="true"></span>
+          </button>
+          <a class="shell-menu-item" href="./workspace/skill-management.html">
+            <span class="shell-menu-icon" aria-hidden="true">C</span>
+            <span>clawos <span class="shell-optional">可选</span></span>
+          </a>
+        </div>
+      </aside>
+
+      <main class="shell-content">
+        <section class="management-card" aria-labelledby="page-title">
+          <div class="management-toolbar">
+            <div class="management-page-name">
+              <span class="management-hex" aria-hidden="true">⌂</span>
+              <h1 id="page-title">模型广场管理</h1>
+            </div>
+          </div>
+
+          <div class="model-board" aria-label="模型列表截图替换区">
+            <div class="model-directory">
+              <div class="directory-toolbar">
+                <label class="directory-search">
+                  <span aria-hidden="true">🔍</span>
+                  <input type="search" placeholder="搜索" aria-label="搜索模型列表" />
+                </label>
+                <div class="directory-actions">
+                  <button class="directory-icon-btn" type="button" aria-label="刷新" title="刷新">↻</button>
+                  <button class="management-btn is-secondary" type="button">批量导入</button>
+                  <button class="management-btn is-primary" type="button">创建</button>
+                </div>
+              </div>
+
+              <div class="directory-table" role="table" aria-label="模型列表">
+                <div class="directory-row directory-head" role="row">
+                  <span>模型 ID <i aria-hidden="true">?</i></span>
+                  <span>模型名称 <i aria-hidden="true">?</i></span>
+                  <span>状态</span>
+                  <span>模型标签</span>
+                  <span>提供商名称</span>
+                  <span>模型描述</span>
+                  <span>创建时间 <b aria-hidden="true">↓</b></span>
+                  <span></span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>qwen2.5-7b</span>
+                  <span><em class="model-logo logo-gray">⌂</em> qwen2.5-7b</span>
+                  <span><mark class="status-online"></mark> 已上线</span>
+                  <span><strong class="tag-blue">文本生成</strong></span>
+                  <span>通义千问</span>
+                  <span>-</span>
+                  <span>2026-06-08 17:48:10</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>what</span>
+                  <span><em class="model-logo logo-gray">⌂</em> any</span>
+                  <span><mark class="status-offline"></mark> 未上线</span>
+                  <span><strong class="tag-blue">文本生成</strong></span>
+                  <span>通义千问</span>
+                  <span>-</span>
+                  <span>2026-06-03 10:28:53</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>deepseek-v4-pro</span>
+                  <span><em class="model-logo logo-deepseek">≋</em> DeepSeek-V4-Pro</span>
+                  <span><mark class="status-offline"></mark> 未上线</span>
+                  <span><strong class="tag-blue">文本生成</strong></span>
+                  <span>DeepSeek</span>
+                  <span>DeepSeek-V4-Pro 拥有百万字超...</span>
+                  <span>2026-04-24 19:03:35</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>kimi-k2.5</span>
+                  <span><em class="model-logo logo-kimi">K</em> Kimi K2.5</span>
+                  <span><mark class="status-online"></mark> 已上线</span>
+                  <span><strong class="tag-blue">文本生成</strong><strong class="tag-green">图片理解</strong></span>
+                  <span>月之暗面</span>
+                  <span>Kimi K2.5 是一款开源的原生多模...</span>
+                  <span>2026-03-10 17:03:49</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>minimax-m2.5</span>
+                  <span><em class="model-logo logo-mini">▥</em> MiniMax-M2.5</span>
+                  <span><mark class="status-online"></mark> 已上线</span>
+                  <span><strong class="tag-blue">文本生成</strong><strong class="tag-orange">函数调用</strong></span>
+                  <span>MiniMax</span>
+                  <span>M2.5 在数十万个复杂真实环境中...</span>
+                  <span>2026-03-09 12:57:02</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>qwen3-coder-480b-a35b-fp8</span>
+                  <span><em class="model-logo logo-qwen">✦</em> Qwen3-Coder-480B-A35B-I...</span>
+                  <span><mark class="status-online"></mark> 已上线</span>
+                  <span><strong class="tag-blue">文本生成</strong><strong class="tag-orange">函数调用</strong></span>
+                  <span>通义千问</span>
+                  <span>Qwen3-Coder-480B-A35B-Instr...</span>
+                  <span>2025-10-30 18:05:02</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>kimi-k2-instruct</span>
+                  <span><em class="model-logo logo-kimi">K</em> Kimi-K2-Instruct</span>
+                  <span><mark class="status-online"></mark> 已上线</span>
+                  <span><strong class="tag-blue">文本生成</strong></span>
+                  <span>月之暗面</span>
+                  <span>Kimi-K2-Instruct 是由月之暗面（...</span>
+                  <span>2025-09-04 14:46:07</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>qwen3-coder-30b-a3b-instruct</span>
+                  <span><em class="model-logo logo-qwen">✦</em> Qwen3-Coder-30B-A3B-Ins...</span>
+                  <span><mark class="status-online"></mark> 已上线</span>
+                  <span><strong class="tag-blue">文本生成</strong><strong class="tag-orange">函数调用</strong></span>
+                  <span>通义千问</span>
+                  <span>Qwen3 系列的 30B 参数编码指令...</span>
+                  <span>2025-08-08 13:30:59</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>dzoo</span>
+                  <span><em class="model-logo logo-dzoo">✣</em> DZoo</span>
+                  <span><mark class="status-online"></mark> 已上线</span>
+                  <span><strong class="tag-blue">文本生成</strong></span>
+                  <span>DaoCloud</span>
+                  <span>DZoo 是 DaoCloud 的大模型，专...</span>
+                  <span>2025-07-08 18:02:58</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+                <div class="directory-row" role="row">
+                  <span>qwen3-235b-a22b-fp8</span>
+                  <span><em class="model-logo logo-qwen">✦</em> Qwen3-235B-A22B-FP8</span>
+                  <span><mark class="status-online"></mark> 已上线</span>
+                  <span><strong class="tag-blue">文本生成</strong></span>
+                  <span>通义千问</span>
+                  <span>Qwen3 是通义系列最新一代大语...</span>
+                  <span>2025-05-15 10:29:55</span>
+                  <span class="row-menu">⋮</span>
+                </div>
+              </div>
+
+              <div class="directory-footer">
+                <span>共 27 项</span>
+                <div class="directory-pagination" aria-label="分页">
+                  <button type="button" aria-label="上一页">‹</button>
+                  <span>1</span>
+                  <span>/ 3</span>
+                  <button type="button" aria-label="下一页">›</button>
+                  <button type="button">10 项</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
-
-  <script>
-    (function () {
-      "use strict";
-
-      var MODULES = [
-        {
-          id: "resource",
-          icon: "◇",
-          title: "资源编排",
-          desc: "算力池、配额、密钥与租户隔离的统一视图与策略下发。",
-          badge: "原型",
-          details:
-            "在此模块中可模拟绑定 GPU/CPU 资源池、设置 Token 发行上限与健康检查。本页为静态演示，数据为占位。",
-          kv: [
-            { label: "状态", value: "就绪" },
-            { label: "配额策略", value: "按租户 + 模型维度" },
-            { label: "下一动作", value: "接入真实 API 后即可联动" },
-          ],
-        },
-        {
-          id: "model",
-          icon: "◎",
-          title: "模型与路由",
-          desc: "多模型接入、版本灰度、路由权重与成本预估的配置中心。",
-          badge: null,
-          details:
-            "点击可查看路由规则与回退链路的占位说明。生产环境可接 OpenAI 兼容网关或自研推理服务。",
-          kv: [
-            { label: "默认路由", value: "智能 weighted" },
-            { label: "灰度", value: "10% canary" },
-            { label: "回退", value: "二级模型队列" },
-          ],
-        },
-        {
-          id: "traffic",
-          icon: "≋",
-          title: "流量与观测",
-          desc: "实时 QPS、延迟分位、错误码与下游依赖的可视化面板入口。",
-          badge: "热点",
-          details:
-            "原型中活动流会记录你的点击，模拟一次“观测事件”。可替换为 OpenTelemetry / Prometheus 实际数据源。",
-          kv: [
-            { label: "采样", value: "全量（演示）" },
-            { label: "SLA 目标", value: "P99 < 800ms" },
-            { label: "告警", value: "待接渠道" },
-          ],
-        },
-        {
-          id: "schedule",
-          icon: "⏱",
-          title: "调度与队列",
-          desc: "公平队列、优先级、 burst 与背压策略的运营控制台。",
-          badge: null,
-          details:
-            "用于演示 burst 限流与租户公平性的交互入口。部署时可由后端调度器消费同一配置模型。",
-          kv: [
-            { label: "队列深度", value: "模拟 128" },
-            { label: "公平性", value: "weighted fair" },
-            { label: "背压", value: "429 + 重试建议" },
-          ],
-        },
-        {
-          id: "biz",
-          icon: "◈",
-          title: "经营与计费",
-          desc: "Token 计量、套餐、账单与毛利分析的运营侧入口。",
-          badge: null,
-          details:
-            "连接计费中台后可展示实时消耗、套餐升级路径与成本分摊。当前为无后端静态页面。",
-          kv: [
-            { label: "计量粒度", value: "按 Token / 请求" },
-            { label: "结算周期", value: "月结（可配）" },
-            { label: "导出", value: "CSV / Webhook" },
-          ],
-        },
-        {
-          id: "copilot",
-          icon: "✦",
-          title: "Copilot 助手",
-          desc: "自然语言巡检、根因建议与策略草稿生成的入口（占位）。",
-          badge: "MVP",
-          details:
-            "将对话能力接到后端 Agent 后，可在此触发巡检报告、策略 diff 与一键应用（需审批流）。",
-          kv: [
-            { label: "模式", value: "只读建议（原型）" },
-            { label: "上下文", value: "当前租户 + 模块快照" },
-            { label: "安全", value: "人机确认后执行" },
-          ],
-        },
-      ];
-
-      var tileGrid = document.getElementById("tileGrid");
-      var activityLog = document.getElementById("activityLog");
-      var drawerOverlay = document.getElementById("drawerOverlay");
-      var drawerTitle = document.getElementById("drawerTitle");
-      var drawerDesc = document.getElementById("drawerDesc");
-      var drawerKv = document.getElementById("drawerKv");
-      var drawerClose = document.getElementById("drawerClose");
-      var btnDemo = document.getElementById("btnDemo");
-      var btnDeployHint = document.getElementById("btnDeployHint");
-
-      function pad2(n) {
-        return n < 10 ? "0" + n : String(n);
-      }
-
-      function nowStr() {
-        var d = new Date();
-        return (
-          d.getFullYear() +
-          "-" +
-          pad2(d.getMonth() + 1) +
-          "-" +
-          pad2(d.getDate()) +
-          " " +
-          pad2(d.getHours()) +
-          ":" +
-          pad2(d.getMinutes()) +
-          ":" +
-          pad2(d.getSeconds())
-        );
-      }
-
-      function appendLog(text) {
-        var li = document.createElement("li");
-        var t = document.createElement("time");
-        t.dateTime = new Date().toISOString();
-        t.textContent = nowStr();
-        li.appendChild(t);
-        li.appendChild(document.createTextNode(text));
-        activityLog.insertBefore(li, activityLog.firstChild);
-        while (activityLog.children.length > 12) {
-          activityLog.removeChild(activityLog.lastChild);
-        }
-      }
-
-      function openDrawer(mod) {
-        drawerTitle.textContent = mod.title;
-        drawerDesc.textContent = mod.details;
-        drawerKv.innerHTML = "";
-        mod.kv.forEach(function (row) {
-          var wrap = document.createElement("div");
-          var dt = document.createElement("dt");
-          dt.textContent = row.label;
-          var dd = document.createElement("dd");
-          dd.textContent = row.value;
-          wrap.appendChild(dt);
-          wrap.appendChild(dd);
-          drawerKv.appendChild(wrap);
-        });
-        drawerOverlay.hidden = false;
-        drawerOverlay.classList.add("is-open");
-        drawerOverlay.setAttribute("aria-hidden", "false");
-        drawerClose.focus();
-        appendLog("打开模块详情 · " + mod.title);
-      }
-
-      function closeDrawer() {
-        drawerOverlay.classList.remove("is-open");
-        drawerOverlay.setAttribute("aria-hidden", "true");
-        setTimeout(function () {
-          if (!drawerOverlay.classList.contains("is-open")) {
-            drawerOverlay.hidden = true;
-          }
-        }, 220);
-      }
-
-      MODULES.forEach(function (mod, index) {
-        var btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "tile";
-        btn.setAttribute("role", "listitem");
-        btn.setAttribute("data-module-id", mod.id);
-        if (mod.badge) {
-          var badge = document.createElement("span");
-          badge.className = "tile-badge";
-          badge.textContent = mod.badge;
-          btn.appendChild(badge);
-        }
-        var icon = document.createElement("div");
-        icon.className = "tile-icon";
-        icon.setAttribute("aria-hidden", "true");
-        icon.textContent = mod.icon;
-        var h3 = document.createElement("h3");
-        h3.textContent = mod.title;
-        var p = document.createElement("p");
-        p.textContent = mod.desc;
-        btn.appendChild(icon);
-        btn.appendChild(h3);
-        btn.appendChild(p);
-        btn.addEventListener("click", function () {
-          openDrawer(mod);
-        });
-        tileGrid.appendChild(btn);
-      });
-
-      drawerClose.addEventListener("click", closeDrawer);
-      drawerOverlay.addEventListener("click", function (e) {
-        if (e.target === drawerOverlay) {
-          closeDrawer();
-        }
-      });
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && drawerOverlay.classList.contains("is-open")) {
-          closeDrawer();
-        }
-        if (
-          e.key === "Enter" &&
-          document.activeElement &&
-          document.activeElement.classList &&
-          document.activeElement.classList.contains("tile") &&
-          !drawerOverlay.classList.contains("is-open")
-        ) {
-          var id = document.activeElement.getAttribute("data-module-id");
-          var mod = MODULES.find(function (m) {
-            return m.id === id;
-          });
-          if (mod) {
-            openDrawer(mod);
-          }
-        }
-      });
-
-      btnDemo.addEventListener("click", function () {
-        var i = Math.floor(Math.random() * MODULES.length);
-        openDrawer(MODULES[i]);
-        appendLog("演示模式：随机打开 · " + MODULES[i].title);
-      });
-
-      btnDeployHint.addEventListener("click", function () {
-        openDrawer({
-          id: "deploy",
-          title: "部署到 Cloudflare Pages",
-          details:
-            "将本仓库推送到 Git 或在仪表盘上传 `index.html` 即可。无需构建步骤：整站即静态文件。若要自定义域名，在 Pages 项目设置中绑定即可。",
-          kv: [
-            { label: "入口文件", value: "/index.html" },
-            { label: "构建命令", value: "无（静态）" },
-            { label: "输出目录", value: "仓库根目录" },
-          ],
-        });
-      });
-
-      appendLog("工作台已加载 · Token Factory Copilot 原型");
-    })();
-  </script>
+  <script src="./js/main.js"></script>
 </body>
 </html>
